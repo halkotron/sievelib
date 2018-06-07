@@ -83,6 +83,7 @@ class ExtensionNotLoaded(CommandError):
     def __str__(self):
         return "extension '{}' not loaded".format(self.name)
 
+
 # Statement elements (see RFC, section 8.3)
 # They are used in different commands.
 comparator = {"name": "comparator",
@@ -96,7 +97,7 @@ address_part = {"name": "address-part",
                 "type": ["tag"],
                 "required": False}
 match_type = {"name": "match-type",
-              "values": [":is", ":contains", ":matches"],
+              "values": [":is", ":contains", ":matches", ":regex"],
               "type": ["tag"],
               "required": False}
 
