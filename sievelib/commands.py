@@ -251,7 +251,7 @@ class Command(object):
                 if isinstance(value, Command):
                     value.dump(indentlevel, target)
                     continue
-                self.__print(str(value), indentlevel, target=target)
+                self.__print(value, indentlevel, target=target)
         for ch in self.children:
             ch.dump(indentlevel, target)
 
