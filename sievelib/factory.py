@@ -401,7 +401,6 @@ class FiltersSet(object):
         if cmd:
             print("Dumping requirements")
             cmd.dump()
-            print
 
         for f in self.filters:
             print("Filter Name: %s" % f["name"])
@@ -423,7 +422,10 @@ class FiltersSet(object):
             cmd.tosieve(target=target)
             target.write(u"\n")
         for f in self.filters:
-            target.write("{}{}\n".format(self.filter_name_pretext, f["name"]))
+            filter_name = f['name']
+            if isinstance(filter_name, six.binary_type):
+                filter_name = filter_name.decode('utf8')
+            target.write("{}{}\n".format(self.filter_name_pretext, filter_name))
             if "description" in f and f["description"]:
                 target.write(u"{}{}\n".format(
                     self.filter_desc_pretext, f["description"]))
